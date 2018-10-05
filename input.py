@@ -6,10 +6,6 @@ import sys
 import json
 import os
 
-
-lookup = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
-number_of_blocks = 5
-
 def insert_address(string):
     
     global addresses
@@ -53,38 +49,10 @@ def get_block(blockhash):
     FILE.close()
 
 
-
-#implements base 58 logic
-class b58():
-    def __init__(self,number):
-        self.n = number
-    def __lt__(self,other):
-        if self.n == other.n:
-            return False
-        
-        if len(self.n) == len(other.n):
-            index = len(self.n)-1
-            
-            while True:
-                if lookup.find(self.n[index]) > lookup.find(other.n[index]):
-                    return True
-                elif lookup.find(self.n[index]) < lookup.find(other.n[index]):
-                    return False
-                index -= 1
-        else:
-            if len(self.n)>len(other.n):
-                return True
-            else:
-                return False
-
-
 def store(addresses):
 
-
     content = str(len(addresses))+'\n'
-    for address in addresses:
-        if address[0] == '1' or address[0] == '3':
-            content += address +'\n'
+    content += '\n'.join(addresses) 
     
     FILE = open('new_block.csv','w')
     content = FILE.write(content)

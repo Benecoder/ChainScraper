@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string>
 #include "linked_list.cpp"
-#include "b58.cpp"
+#include "compare.cpp"
 #include <fstream>
 using std::string;
 
